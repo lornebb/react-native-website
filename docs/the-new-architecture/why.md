@@ -23,17 +23,17 @@ _The Bridge_ had some intrinsic limitations:
 
 ## New Architecture's Improvements
 
-The New Architecture dropped the concept of _The Bridge_ in favor of another communication mechanism: the _JavaScript Interface (JSI)_. The _JSI_ is an interface that allows a JavaScript object to hold a reference to a C++ and viceversa.
+The New Architecture dropped the concept of _The Bridge_ in favor of another communication mechanism: the _JavaScript Interface (JSI)_. The _JSI_ is an interface that allows a JavaScript object to hold a reference to a C++ object and viceversa.
 
-Once an object has a reference to the other one, it can directly invoke methods on it. So, for example, a C++ object can now asks a JavaScript object to execute a method in the JavaScript world and viceversa.
+Once an object has a reference to the other one, it can directly invoke methods on it. So, for example, a C++ object can now ask a JavaScript object to execute a method in the JavaScript world and viceversa.
 
 This idea allowed to unlock several benefits:
 
 - **Synchronous execution:** it is now possibile to execute synchronously those functions that should not have been asynchronous in the first place.
-- **Concurrency:** it is possible from JavaScript to invoke functions that are executed on different thread.
-- **Lower overhead:** the New Architecture don't have to serialize/deserialize the data anymore, therefore there are no serialization taxes to pay.
+- **Concurrency:** it is possible from JavaScript to invoke functions that are executed on different threads.
+- **Lower overhead:** the New Architecture doesn't have to serialize/deserialize the data anymore, therefore there are no serialization taxes to pay.
 - **Code sharing:** by introducing C++, it is now possible to abstract all the platform agnostic code and to share it with ease between the plaforms.
-- **Type safety:** to make sure that JS can properly invoke methods on C++ objects and viceversa, a layer of code automatically generated has been added. The code is generated starting from some JS specification that must be typed through Flow or TypeScript.
+- **Type safety:** to make sure that JS can properly invoke methods on C++ objects and viceversa, a layer of code that automatically generates has been added. The code is generated starting from some JS specification that must be typed through Flow or TypeScript.
 
 These advantages are the foundations of the [TurboModule](pillars-turbomodules) system and a jumping stone to further enhancements. For example, it has been possible to develop a new renderer which is faster and more performant: [Fabric](/architecture/fabric-renderer) and its [Fabric Components](pillars-fabric-components).
 
